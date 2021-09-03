@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="clock-outer">
+        <div class="clock">
+            <div class="lable">
+                <span class="primary">Gaze stanz</span>
+                <span class="secondary">EST 1933</span>
+            </div>
+            <div class="center-circle">&nbsp;</div>
+
+            <div class="point point__hour">&nbsp;</div>
+            <div class="point point__minute">&nbsp;</div>
+
+            <div class="hand hand__hour">&nbsp;</div>
+            <div class="hand hand__minute">&nbsp;</div>
+            <div class="hand hand__second">&nbsp;</div>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        let radius = 22;
+        let clock = document.querySelector('.clock');
+
+        for(let i = 0; i < 12; i++)
+        {   
+            let deg = i * 30;
+            if(deg%90 != 0)
+                continue;
+            let transY = - radius * (Math.cos(Math.PI * deg/180));
+            let transX = radius * (Math.sin(Math.PI * deg/180));
+
+            let hourpoint = document.createElement('div');
+            hourpoint.classList.add('point');
+            hourpoint.classList.add('point__hour');
+            hourpoint.style["transform"] = `translate(${transX}rem, ${transY}rem)`;
+
+            clock.appendChild(hourpoint);
+        }
+        // for(let i = 0; i < 60; i++)
+        // {   
+        //     let deg = i * 6;
+        //     if(deg % 30 == 0)
+        //         continue;
+        //     let transY = - radius * (Math.cos(Math.PI * deg/180));
+        //     let transX = radius * (Math.sin(Math.PI * deg/180));
+
+        //     let minutepoint = document.createElement('div');
+        //     minutepoint.classList.add('point');
+        //     minutepoint.classList.add('point__minute');
+        //     minutepoint.style["transform"] = `translate(${transX}rem, ${transY}rem)`;
+
+        //     clock.appendChild(minutepoint);
+        // }
+                
+        
+
+        const timefunction = function(){
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds() + 1;
+
+            
+            return {hour, min, sec};    
+        }
+        const timeToDegree = function(){
+            let {hour, min, sec} = timefunction();
+            hour = hour % 12;
+            let hourdegree = 30.0 * hour + min/60.0 * 30;
+            let mindegree = min/60.0 * 360 + sec/60.0 * 6;
+            let secdegree = sec * 6;
+            
+            console.log(hourdegree, mindegree, secdegree);
+            return {hourdegree, mindegree, secdegree};
+        }
+        let hourHand = document.querySelector(".hand__hour");
+        let minHand = document.querySelector(".hand__minute");
+        let secHand = document.querySelector(".hand__second");
+        
+        const setHand = function(){
+            let {hourdegree, mindegree, secdegree} = timeToDegree();
+            hourHand.style["transform"] = `translate(-20%, -50%) rotate(${-90 + hourdegree}deg)`;
+            minHand.style["transform"] = `translate(-15%, -50%) rotate(${-90 + mindegree}deg)`;
+            secHand.style["transform"] = `translate(-15%, -50%) rotate(${-90 + secdegree}deg)`;
+        }
+        let tick = setInterval(setHand, 1000);
+
+
+    </script>
+</body>
+</html>

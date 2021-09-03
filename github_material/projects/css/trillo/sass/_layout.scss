@@ -1,0 +1,101 @@
+.container{
+    max-width: 110rem;
+    min-height: 50rem;
+    margin: 6rem auto;
+
+    background-color: var(--color-grey-light-1);
+    border-radius: .2rem;
+    box-shadow: var(--shadow-dark);
+}
+
+.header{
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.content{
+    // to align sidebar and main content to left
+    display: flex;       
+  
+}
+
+.sidebar{
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%;
+    align-self: stretch;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    &__link{
+        position: relative;
+    
+        &:visited, &:link{
+            text-decoration: none;
+        }
+        &:not(:last-child){
+            margin-bottom: .3rem;
+        }
+        &::before{
+            content: "";
+            position:absolute;
+            width: 1px;
+            height: 100%;
+            background-color: var(--color-primary);
+            transform: scaleY(0);
+            transition: transform .2s,                                  // by explicit transition we can stage transition one after other
+                        width .4s cubic-bezier(1, 0, 0, 1) .2s,
+                        background-color .1s;
+            
+        }
+        &:hover::before, &-active::before{
+            transform: scaleY(1);
+            width: 100%;
+        }
+        &:active::before{
+            background-color: var(--color-primary-light);
+        }
+    }
+
+}
+
+.hotel-view{
+    background-color: #fff;
+
+    flex: 1;    
+}
+.detail{
+    display: flex;
+    background-color: var(--color-grey-light-1);
+    padding: 4.5rem;
+    border-bottom: var(--line);
+    box-shadow: var(--shadow-light);
+    font-size: 1.4rem;
+
+}
+.description{
+    flex: 0 0 60%;
+    background-color: #fff;
+    margin-right: 4.5rem;
+    padding: 2.5rem;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+}
+.hotel-review{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cta{
+    background-color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome <%= vars.username %> </title>
+</head>
+<body>
+    <h1>Bhelcome <%= vars.username %> </h1>
+    <h2>below are your details-</h2>
+    <h3>Assets-</h3>
+    <h5><i>Asset Amount - $<%= vars.totalAssets  %> </i></h5>
+    
+    <% if(Object.keys(vars.assetList).length === 0) { %> 
+        <h4>Opps! you don't have any assets. Start investing now!</h4>
+        
+        <% }else { %> 
+            
+            <% JSON.stringify(vars.assetList) %> 
+            <ul>
+                <% for(let detail of Object.entries(vars.assetList)) {%>
+                    <li> <b> <%= detail[0] %> </b> -$ <%=  detail[1][0] %> </li>           
+            <% } %> 
+        </ul>
+        <% } %>    
+    <p>
+        <a href="/user/edit/<%= vars.username %>"> Edit</a> 
+    </p>  
+    <h3>Debt</h3>    
+    <h5><i>Debt Amount - $<%= vars.totalDebt  %> </i></h5>
+    <% if(Object.keys(vars.debtList).length === 0) { %> 
+        <h4>Oh yeah! You are debt free</h4>
+
+    <% }else { %> 
+
+        <% JSON.stringify(vars.debtList) %> 
+        <ul>
+            <% for(let detail of Object.entries(vars.debtList)) {%>
+                <li> <b> <%= detail[0] %> </b> - $<%=  detail[1][0] %> </li>           
+            <% } %> 
+        </ul>
+    <% } %>   
+    <p>
+        <a href="/user/edit/<%= vars.username %>"> Edit</a> 
+    </p>  
+
+</body>
+</html>

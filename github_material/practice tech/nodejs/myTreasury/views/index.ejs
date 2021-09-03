@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | myTreasury</title>
+    <style>
+        *,*::after,*::before{
+            margin:0;
+            padding:0;
+
+        }
+        body{
+            padding:2rem;
+            background-color: #eee;
+            color:rgb(80, 78, 78);
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+        .heading-primary{
+            display:inline-block;
+            
+        }
+        .u-center{
+            text-align: center;
+        }
+        .login{
+            display: inline-block;
+            margin:3rem 0;
+            padding:2rem 1rem;
+            border-radius: 3px;
+            box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, .2);
+            background-image: linear-gradient(to bottom right, rgba(108, 167, 243, 0.74), rgba(9, 13, 224, 0.644));
+        }
+        .heading-tertiary{
+            margin:1rem 0;
+            color: rgb(253, 215, 1);
+        }
+        .form-box{
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+        .form__group{
+            margin:.8rem 0;
+
+        }
+        label{
+            color: white;
+        }
+        input{
+            font-size: 1.5rem;
+            background-color: rgba(218, 240, 250, 0.973);
+        }
+        input:focus{
+            background-color: white;
+        }
+        button{
+            display: inline-block;
+            width: 100%;
+            padding: 1.5rem 1rem;
+            background-color: yellowgreen;
+            color: white;
+            border: 1px solid rgba(149, 236, 134, 0.603);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+            cursor: pointer;
+            transition: all .2s;
+        }
+        button:hover,button:focus{
+            box-shadow: 0 2rem 3rem rgba(0, 0, 0, .4);
+            transform: translateY(-1px);
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="u-center">
+        <h1 class="heading-primary">Welcome to myTreasury</h1>
+    </div>
+
+    <div class="u-center">
+        <div class="login">
+            <h3 class="heading-tertiary">Login</h3>
+            <div class="form-box">
+                <form action="../user" method="post" class="form">
+                    <div class="form__group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="user">
+                    </div>
+                    <div class="form__group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="pass">
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

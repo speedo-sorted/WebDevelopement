@@ -1,0 +1,15 @@
+Pug 
+
+Pug is - a template engine, for node and for the browser
+-It compiles to HTML
+- Pug makes it easy both to write reusable HTML, as well as to render data pulled from a database or API.
+
+What’s a Template Engine and Why Do I Need One?
+
+compiling a template into HTML
+ it will inject into the template it’s compiling.
+defining dynamic elements based on your data
+
+Link to tutorial -
+https://www.sitepoint.com/a-beginners-guide-to-pug/
+

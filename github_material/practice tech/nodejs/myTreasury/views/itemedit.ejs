@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit: myTreasury</title>
+</head>
+<body>
+    <h2>Edit - </h2>
+    <section>
+        <form action="/user/edit/<%= usernam %>" method="POST">
+            <section>
+                <h4>verify that it is you-</h4>
+                <div>
+                    <div><label for="username">Username</label></div>
+                    <div><input type="text" name="username" id="username" value="<%= usernam %>" disabled placeholder="<%= usernam %> "></div>
+                </div>
+                <div>
+                    <div><label for="password">password</label></div>
+                    <div><input type="password" name="password" id="password" placeholder="enter password here" required></div>
+                </div>
+            </section>
+            <section>
+                <h5>Assets</h5>
+                <% for (let [key, value] of Object.entries(assetList)){ %> 
+                    <div>
+                        <div><label for="<%= key %> "> <%= key %> </label></div>
+                        <div><input type="number" name="A<%= key %>" id="<%= key %>" value="<%= value[0] %>" required ></div>
+                    </div>
+                <% } %> 
+            </section>
+            <section>
+                <h5>Debt</h5>
+                <% for (let [key, value] of Object.entries(debtList)){ %> 
+                    <div>
+                        <div><label for="<%= key %> "> <%= key %> </label></div>
+                        <div><input type="number" name="D<%= key %>" id="<%= key %>" value="<%= value[0] %>" required ></div>
+                    </div>
+                <% } %> 
+            </section>
+            <button>Submit</button>
+        </form>
+    </section>
+</body>
+</html>

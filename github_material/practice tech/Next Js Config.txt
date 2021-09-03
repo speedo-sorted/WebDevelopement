@@ -1,0 +1,27 @@
+
+-- config file for nextjs typescript and tailwindcss
+
+
+npx create-next-app projectname
+cd projectname
+touch tsconfig.json
+npm install --save-dev typescript @types/react @types/node
+touch next-env.d.ts
+
+or 
+
+npx create-next-app --ts
+yarn create next-app --typescript
+
+//Just Tailwind with next js
+npx create-next-app -e with-tailwindcss my-project
+
+//Existing Project
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+replace purge: [] with purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}']  in  tailwind.config.js
+
+import in styles/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

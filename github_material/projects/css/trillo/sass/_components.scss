@@ -1,0 +1,448 @@
+///////////////////////////////////
+// logo 
+.logo {
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+.search {
+    flex: 0 0 45%;
+
+    display: flex;                  
+    align-items: center;
+    justify-content: center;
+
+    &__input {
+        width: 90%;                                 // 100% when focused -- animation
+        padding: 1rem 2rem;
+        margin-right: -3.25rem;
+        
+        background-color: var(--color-grey-light-2);
+        font-family: inherit;
+
+        border: none;
+        border-radius: 2rem;
+        transition: width .2s;
+
+        &:focus{
+            width: 100%;
+            outline: none;
+            background-color: var(--color-grey-light-3);
+            color: var(--color-grey-dark-3);
+
+        }
+        &::placeholder{
+            color: var(--color-grey-light-4);
+        }
+
+    }
+    &__input:focus + &__button{
+        background-color: --var(--color-grey-light-3);
+    }
+    &__button {
+        background-color: --var(--color-grey-light-2);
+        border: none;
+        fill: var(--color-grey-dark-3);                                 // svg color
+        :hover{
+            cursor: pointer;
+        }
+        :focus{
+            outline: none;
+        }
+        :active{
+            transform: translateY(2px);
+        }
+    }
+    &__icon{
+        height:1.8rem;
+        width: 1.8rem;
+    }
+}
+.user-nav{
+    align-self: stretch;
+
+    display: flex;
+    align-items: stretch;
+    
+    & > * {                 // all direct child
+        padding: 0 2rem;
+        cursor: pointer;
+        // height: 100%;
+
+        display: flex;
+        align-items: center;
+        &:hover{
+            background-color: var(--color-grey-light-2);
+        }
+
+    }
+    &__icon-box{
+        position: relative;
+    }
+    &__icon{
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: var(--color-grey-dark-2);
+
+
+    }
+    &__notification{
+        font-size: .8rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+        color: #fff;
+
+        position: absolute;
+        top: 1.4rem;
+        left: 3rem;
+        display: flex;                          // for text at center
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    &__user-photo{
+        height: 3.25rem;
+        width: 3.25rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+    &__user-name{
+        font-size: 1.2rem;
+
+    }
+}
+/////////////////////////////////////
+// sidebar
+.navitem {
+    padding: 1.2rem 1rem;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--color-grey-light-1);
+    position: relative;
+    z-index: 10;
+
+    &:last-child{                               //  in flex-main-axis for space do margin:auto not align self
+        margin-top: auto;
+    }
+    
+    &__icon-box{
+        margin: 0 2rem;
+    }
+    &__icon{
+        width: 2rem;
+        height: 2rem;
+        fill: currentColor;                 // sets color property of itselfif provided, else take color of parent 
+    }
+    &__item-name{
+        text-transform: uppercase;
+    }
+    &__copy{
+        align-self: flex-end;
+        color: var(--color-grey-light-4);
+    }
+}
+
+////////////////////////// 
+// gallery
+.gallery{
+    display: flex;
+    &__photo{
+        width: 100%;
+        display: block;     // default inline which default gives some space at bottom, so to remove it display block
+    }
+}
+
+///////////////////// 
+// overview
+.overview{
+
+    display: flex;
+    align-items: center;
+    border-bottom: var(--line);
+
+    &__heading{
+        text-transform: uppercase;
+        display: inline-block;
+        font-size: 2.3rem;
+        font-weight: 350;
+        padding: 1.5rem 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    &__rating{
+
+        display: flex;              // this removes extraspace in bottom of svg stars
+        margin-right: auto;         // hack: used with flexbox elements to give whole space to margin
+
+    }
+    &__location{
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-right: 3rem;
+    }
+
+    &__location-icon, &__rating-icon{
+        width: 1.8rem;
+        height: 1.8rem;
+        fill: var(--color-primary);
+    }
+    &__location-icon{
+        margin-right: .5rem;
+    }
+    &__review{
+        align-self: stretch;
+        font-size: 1.2rem;
+        background-color: var(--color-primary);
+        color: #fff;
+        padding: 0 2.1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__count{
+            font-size: 2.3rem;
+            font-weight: 300;
+            margin-bottom: -3px;
+        }
+        &__votes{
+            font-size: 1.1rem;
+        }
+    }
+
+}
+
+.button-inline {
+    display: inline-block;
+    padding: 2px;
+
+    background-color: transparent; // when reuse the back color is of parent
+    color: var(--color-primary);
+
+    font-size: inherit;     // so that when we reuse it size is of parent
+    border: none;
+    border-bottom: 1px solid currentColor;
+    cursor: pointer;
+    transition: all .2s;
+
+    & span{
+        font-size: 1.6rem;
+        margin-left: .3rem;
+        transition: margin-left .2s;
+    }
+    &:hover{
+        color: var(--color-grey-dark-1);
+        & span{
+            margin-left: .8rem;
+        }
+    }
+    &:focus{
+        outline: none;
+        animation: pulsate .5s infinite;
+    }
+
+}
+@keyframes pulsate{
+    0%{
+        transform: scale(1);
+        box-shadow: none;
+    }
+    50%{
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+    }
+    100%{
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+.button-block{
+    display: inline-block;  
+    margin-top: 2.5rem;
+    font-size: 1.4rem;
+    height: 4.5rem;
+    width: 20rem;
+    overflow: hidden;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 2.6rem;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative;
+    
+    &__invisible{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: inline-block;
+        padding: 1rem 0 ;
+        top: -100%;
+        left: 0;
+        transition: all .2s;
+    }
+    &__visible{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: inline-block;
+        padding: 1rem 6rem;
+        top: 0;
+        left: 0;
+        transition: all .2s;
+    }
+    &:hover{
+        & .button-block__invisible{
+            top: 0;
+        }
+        & .button-block__visible{
+            top: 100%;
+        }
+    }
+}
+
+/////////////////////////////////////
+// paragraph
+.paragraph:not(:last-of-type){
+    margin-bottom: 2rem;
+}
+/////////////////////////////////// 
+// heading
+.heading{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+
+/////////////////////////////////////
+// list
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    list-style: none;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    &__item{
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+        
+        // &::before{                                      // adding svg in css, to give color give background-color,mask it only on the image
+        //     content: "";  
+        //     display: inline-block;
+        //     width: 1rem;
+        //     height: 1rem;
+        //     margin-right: .7rem;                          
+        //     background-color: var(--color-primary);
+        //     mask-image: url(../img/chevron-thin-right.svg);
+        //     mask-size: cover;
+        // }
+    }  
+    &__icon{
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+    } 
+    
+}
+
+/////////////////////////////////////
+// recommend
+.recommend{
+    display: flex;
+    color: var(--color-grey-dark-3);
+    align-items: center;
+    font-size: 1.3rem;
+    box-sizing: content-box;        // here we want that when border is given it should have its own size not of photo
+    &__count{
+        margin-right: auto;
+    }
+    &__photo{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        &:not(:last-child){
+            margin-right: -1.5rem;
+        }
+
+    }
+    // &__friends{
+    // }
+    
+}   
+/////////////////////////////////// 
+// review
+
+.review{
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 2.8rem 2.6rem;
+    margin-bottom: 3rem;
+    border-radius: .3rem;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+
+    &__text{
+        position: relative;
+        z-index: 5;
+        margin-bottom: 1.8rem;
+    }
+    &__user{
+        display: flex;
+        align-items: center;
+
+    }
+    &__photo{
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: 50%;
+        margin-right: 1.4rem;
+
+    }
+    &__user-box{
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+        justify-content: space-evenly;
+    }
+    &__user-name{
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: 600;
+
+    }
+    &__user-date{
+        font-size: 1.2rem;
+    }
+    &__rating{
+        font-size: 2.1rem;
+        color: var(--color-primary);
+    }
+
+    &::before{
+        content: "\201C";
+        line-height: 1;
+        font-size: 22rem;
+        position: absolute;
+        font-family: sans-serif;
+        z-index: 1;
+        top: -2.6rem;
+        left: -1rem;
+        color: var(--color-grey-light-3);
+    }
+}

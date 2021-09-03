@@ -1,0 +1,108 @@
+.logo{
+    width:400px;
+    margin: auto ;
+    height:100px;
+}
+.box{
+    width:400px;
+    height:400px;
+    margin:auto;
+    
+    border-radius:8px;
+    -webkit-box-shadow: 0 0 10px rgb(181, 183, 184);
+        box-shadow: 0 0 10px rgb(186, 189, 189);
+}
+.box1{
+    padding:20px;
+    padding-top:10px;
+    height: 380px;
+}
+input{
+    width:90%;
+    margin:7px;
+    padding:6px;
+    height:38px;
+    margin-bottom:20px;
+    font-size: 16px;
+    font-weight:150;
+    border:1px solid rgba(0,0,0,0.6);
+    border-radius:4px !important;
+}
+.lastbutton{
+    display:inline-block;
+
+}
+body{
+font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
+}
+h1{
+    font-weight:500;
+    width:80%;
+    padding-left:6px;
+    margin-bottom:0px;
+}
+a{
+    text-decoration:none;
+    font-weight:600;
+}
+.button{
+    width:300px;
+    height:50px;
+    text-align:centre;
+    margin:5px auto;
+}
+.button>button{
+    transform: translate(-32px);
+    background-color: #0a66c2;
+    height: 50px;
+    width: 350px;
+    margin: 5px;
+    color: white;
+    font-size: 19px;
+    
+    border: none;
+    border-radius: 25px;
+}
+#para{
+    margin-top:3px;
+    margin-bottom:24px;
+    padding-left:6px;
+}
+.new{
+    width:250px;
+    margin: 15px auto;
+}
+.newtext{
+    display:inline-block;
+}
+.lastbutton{
+    display:inline-block;
+    margin-left:30px;
+}
+.lastbutton > button{
+   
+    padding:7px 12px 7px 12px;
+    font-size:15px;
+    color:-webkit-link;
+    background-color:white;
+    padding:7px;
+    padding-left:15px;
+    padding-right:15px;
+    border:none;
+}
+input:focus {
+    /* for border color blue */
+    border-color: #719ECE;                  
+    box-shadow: 0 0 3px #719ECE;
+    outline: none !important;
+}
+.lastbutton>button:hover{
+    text-decoration:underline;
+    background-color:rgba(208, 232, 255, .3) ;
+    
+    border-radius:10px;
+
+}
+.forgot a {
+    color: #0a66c2;
+}

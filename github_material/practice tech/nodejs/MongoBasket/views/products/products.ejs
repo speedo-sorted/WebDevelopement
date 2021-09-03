@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Products</h1>
+    <ul>
+        <% for(let product of products){ %> 
+            <li>
+                <b><%= product.name %></b> - <%= product.quantity %> unit is
+                <% if(['a', 'e', 'i', 'o', 'u'].find(e => e === product.type[0])){ %>  
+                    an 
+                <% }else { %>
+                    a
+                    <% } %> 
+                    <%= product.type %> 
+            </li> 
+            <a href="product/edit"></a>
+        <% } %> 
+    </ul>
+</body>
+</html>

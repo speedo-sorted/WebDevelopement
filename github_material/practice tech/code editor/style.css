@@ -1,0 +1,91 @@
+/*
+keyword
+text
+operator
+punctuations
+strings
+method
+class
+
+*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.code {
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  position: relative;
+  line-height: 1.5;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.8rem;
+  font-weight: 350;
+  border-radius: 0.5rem;
+  background-color: #20273c;
+  color: #e57171;
+}
+
+.keyword, .operator, .seperator, .quotation {
+  color: #cd92d8;
+}
+
+.class {
+  color: #ff9100;
+}
+
+.variable {
+  color: #e57171;
+}
+
+.method {
+  color: #65b5f6;
+}
+
+.string {
+  color: #c4e0a3;
+}
+
+.punctuation {
+  color: #bdbdbd;
+}
+
+.code-language {
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  color: #7f98a4;
+  font-size: 1.6rem;
+  text-align: end;
+}
+
+/*
+DARK THEME TAILWINDCSS
+
+$color-background-code: #1f2937;
+
+$color-comment: #9ca3af;       // italic
+$color-import: #bae6fd;
+$color-string: #bef264;
+$color-class: #22d3ee;
+$color-function: #e879f9;
+
+$font-family-code: ui-monospace,SFMono-Regular,Menlo,
+    Monaco,Consolas,Liberation Mono,Courier New,monospace; 
+
+$font-family-js: inter;
+*//*# sourceMappingURL=style.css.map */

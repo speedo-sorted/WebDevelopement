@@ -1,0 +1,121 @@
+
+@mixin poscenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+.clock-outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: radial-gradient(#fff 63%, rgb(47, 47, 47) 96%, #000000 100%);
+    box-shadow: .4rem 0 1rem rgba(0, 0, 0, .1);
+}
+.clock{
+    width: 94%;
+    height: 94%;
+    border-radius: 50%;
+    background-color: #F0F0F0;
+    box-shadow: inset 0.3rem 0rem 0.5rem rgb(0 0 0 / 15%);
+
+    position: relative;
+    
+}
+.center-circle{
+
+    @include poscenter;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #202020;
+    border-radius: 50%;
+    transform: translateX(-.5rem);
+}
+.hand{
+
+    @include poscenter;
+
+    background-color: #202020;
+
+    &__hour{
+        width: 44%;
+        height: .49rem;
+        border-radius: 4rem;
+        transform-origin: 20% .3rem;
+        transform: translate(-20%, -50%) rotate(0deg);
+        box-shadow: .3rem .3rem 1rem .4rem rgba(0, 0, 0, .15);
+
+    }
+    &__minute{
+        width: 52%;
+        height: .4rem;
+        border-radius: 1rem;
+        transform-origin: 15% .2rem;
+        transform: translate(-15%, -50%) rotate(90deg);
+        box-shadow: 1.2rem .5rem .5rem rgba(0, 0, 0, .15);
+    }
+    &__second{
+        width: 55%;
+        height: .3rem;
+        border-radius: 2rem;
+        transform-origin: 15% .15rem;
+        transform: translate(-15%, -50%) rotate(30deg);
+        box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, .15);
+    }
+
+}
+.point{
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    background-color: #222;
+    border-radius: 50%;
+
+    &__hour{
+        width: .6rem;
+        height: .6rem;
+    }
+    &__minute{
+        width: .3rem;
+        height: .3rem;
+    }
+}
+.lable{
+    font-weight: 300;
+    font-family: Roboto, sans-serif;
+    position: absolute;
+    text-transform: uppercase;
+    top: 66%;
+    left: 41.5%;
+
+}
+.primary{
+    display: block;
+    font-size: 1.2rem;
+}
+.secondary{
+    text-align: center;
+    display: block;
+    font-size: 1rem;
+}
+

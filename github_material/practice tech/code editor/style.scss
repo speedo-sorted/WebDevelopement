@@ -1,0 +1,99 @@
+/*
+keyword
+text
+operator
+punctuations
+strings
+method
+class
+
+*/
+/////////////////////////////////////////////////////////////////
+$clr-bk: #20273c;
+$clr-tkn-comment: #7f98a4;
+$clr-tkn-method-dark: #65b5f6;
+$clr-tkn-class: #ff9100;
+$clr-tkn-string: #c4e0a3;
+$clr-tkn-keyword: #cd92d8;
+$clr-tkn-method-light: #25c5da;
+$clr-tkn-variable: #e57171;
+$clr-tkn-punctuation: #bdbdbd;
+
+//////////////////////////////////////////////////////////////////
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *::after, *::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.code{
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+    position: relative;
+
+    line-height: 1.5;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 350;
+
+    border-radius: .5rem;
+    background-color: $clr-bk;
+    color: $clr-tkn-variable;
+
+}
+.keyword, .operator, .seperator, .quotation{
+    color: $clr-tkn-keyword;
+}
+.class{
+    color: $clr-tkn-class;
+}
+.variable{
+    color: $clr-tkn-variable;
+}
+.method{
+    color: $clr-tkn-method-dark;
+}
+.string{
+    color: $clr-tkn-string;
+}
+.punctuation {
+    color: $clr-tkn-punctuation;
+}
+.code-language{
+    position: absolute;
+    top: .5rem; 
+    right: 2rem;
+    color: $clr-tkn-comment;
+    font-size: 1.6rem;
+    text-align: end;
+    margin-bottom: 1rem;
+}
+
+/*
+DARK THEME TAILWINDCSS
+
+$color-background-code: #1f2937;
+
+$color-comment: #9ca3af;       // italic
+$color-import: #bae6fd;
+$color-string: #bef264;
+$color-class: #22d3ee;
+$color-function: #e879f9;
+
+$font-family-code: ui-monospace,SFMono-Regular,Menlo,
+    Monaco,Consolas,Liberation Mono,Courier New,monospace; 
+   
+$font-family-js: inter;
+*/ 
