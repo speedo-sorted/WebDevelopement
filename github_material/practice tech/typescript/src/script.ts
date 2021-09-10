@@ -3,7 +3,7 @@ let val = "hi";
 console.log(val);
 
 let ary = ["hi", "hello"];
-ary.push("ban");
+ary.push(...["ban", "hi"]);
 
 ary = ["g", "gd"]; // but not [3, 6, 5]
 
@@ -44,11 +44,13 @@ const myUnchangingUser = {
   
 //   myUnchangingUser.name = "Raîssa";  // ERROR
   
-  // "as const" is a great tool for fixtured data and
+  // "as const" is a great tool for fixtured DATA and       -> value of variable becomes constant
   // "as const" also
   // works with arrays:
   
-  const exampleUsers = [{ name: "Brian" }, { name: "Fahrooq" }] as const;
+  let exampleUsers = [{ name: "Brian" }, { name: "Fahrooq" }] as const;
+
+//   exampleUsers = [{ name: "Josh" }, { name: "Fahrooq" }];    // gives error as name changed to JOSH
 
 ////////////////////////////////////////
 
@@ -91,12 +93,16 @@ class Man {
 
 interface persInterface {
     lastName: string,
-    sayHello: () => number
+    sayHello: () => number          // both syntax work for objects / classes / functions sayHello, and sayHi
+    sayHi(): string
 }
   // person has firstname additional to persInterafce interface
 class Person implements persInterface {
-    firstName: string;
-    lastName: string;
+    firstName: string;                         //in TS declaration of firstname and lastname required unlike JS(only in constructor)
+
+    lastName: persInterface["lastName"];        // instead of providing string you can say -> it has same as type of "lastName" 
+                                                //of persInterface i.e string it helps in telling relationship
+
 constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -105,7 +111,34 @@ constructor(firstName: string, lastName: string) {
 sayHello(): number {
     return 10;
 }
+sayHi(){return "hi"}
 }
+let Josh = new Person("josh", "singh");
+Josh.sayHello();
+Josh.sayHi();
+
+interface Car {
+    name: string, 
+    model?: number;             // optional i.e number | undefined
+
+}
+let benz : Car;
+benz = {
+    name: "mercedez benz classic", 
+    // model: 4
+}
+
+/////////////////// utility types 
+// Partial<type>   --- it is normal interface just makes all properties as optional 
+interface Bike {
+    name: string;
+    model: number;
+}
+let crux : Partial<Bike> = {
+    name: "crux delux super byke"       // no error for model i.e makes name? and model?
+};
+//  Required<type>   --- similar to Partial<type> except makes all required
+
 
 //////////////////////////////////////// 
 // generics 
@@ -121,7 +154,6 @@ function uid(obj: object){      // type is object hence no idea of what the prop
 }
 
 let newobject = uid({name: "shaun", age: 53});
-
 console.log(newobject.uidno);   // fine 
 // console.log(obj.age);          // ERROR: dont know if property "age" exists
 
@@ -152,5 +184,11 @@ let newstorage: storage<string> = {
     name: "Adults", 
     qty: 5, 
     data: "they are old"
+}
+
+let anotherstorage : storage<number> = {
+    name: "Child", 
+    qty: 4, 
+    data: 243
 }
 

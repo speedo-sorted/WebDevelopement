@@ -3,97 +3,114 @@
 let val = "hi";
 console.log(val);
 let ary = ["hi", "hello"];
-ary.push("ban");
-ary = ["g", "gd"]; // but not [3, 6, 5]
-function fun(value) {
-    return value * 3;
-}
-console.log(fun(3));
-let boole;
-boole = NaN;
-console.log("hello there");
-let math = 4;
-let b; // any type by default
-b = "hi";
-console.log(b);
-b = 4;
-let fff; // function signature
-fff = function (objet) {
-    return `${objet.name} is in class ${objet.cls}`;
-};
-console.log(fff({ name: "he", cls: 44 }));
-//////////////////////////////////////
-const myUnchangingUser = {
-    name: "Fatma",
-};
-// When "as const" is applied to the object, then it becomes
-// a object literal which doesn't change instead of a
-// mutable object which can.
-//   myUnchangingUser.name = "Raîssa";  // ERROR
-// "as const" is a great tool for fixtured data and
-// "as const" also
-// works with arrays:
-const exampleUsers = [{ name: "Brian" }, { name: "Fahrooq" }];
-////////////////////////////////////////
-let form = document.querySelector('form'); // type is HTMLFormElement
-// console.log(form.method);       will give error as form value may be null 
-// so - 1. form = document.querrselector('form')!;  --  means we gurantee that form element is present
-//  or if(form){console.log(form.method)} 
-let div = document.querySelector('.container'); // type element as can't infer from class name but from tag name    
-// or div = document.querySelector('.container') as HTMLDivElement; 
-//////////////////////////////////////////////////////////
-// now change in tsconfig file change - "target": es6 i.e we will write in this 
-// and change module to ES2015
-// do tsc --init to produce a cofig file for ts
-// change rootDirec: to directory in which files will be compiled
-// change ourDirec: to directory to directory in which compiled js files will go 
-// add property - "include: ["src"]" in tsconfig file at last => only files in src folder will be compiled to .js files 
-///////////////////////////////////////////////////////  
-//classes 
-class Man {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    } // with private members you don't have to write constructor, just pass them
-    speak() { console.log("I am speaking!", this.name, this.age); }
-}
-// person has firstname additional to persInterafce interface
-class Person {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    sayHello() {
-        return 10;
-    }
-}
-//////////////////////////////////////// 
-// generics 
-// generics are similar to c++ templates, i.e multiple types share common function/class etc 
-//and we specify which type we are using while declaration
-function uid(obj) {
-    let uidno = Math.floor(Math.random() * 10) + 1;
-    // console.log(obj.age);          // ERROR: dont know if property "age" exists
-    return Object.assign(Object.assign({}, obj), { uidno }); // we only know that returned object has uidno property not name or age as we passed type:object             
-}
-let newobject = uid({ name: "shaun", age: 53 });
-console.log(newobject.uidno); // fine 
-// console.log(obj.age);          // ERROR: dont know if property "age" exists
-// so use generics 
-function newuid(obj) {
-    let uidno = Math.floor(Math.random() * 10) + 1;
-    return Object.assign(Object.assign({}, obj), { uidno });
-}
-let anotherobject = newuid({ name: "shaun", age: 53 });
-console.log(anotherobject.age); // works fine
-// but here 
-let someobject = newuid("shaun"); // works !!!! but but we want only object to be T so 
-function finaluid(obj) {
-    // do same here works only with that object
-}
-// now 
-let newstorage = {
-    name: "Adults",
-    qty: 5,
-    data: "they are old"
-};
+ary.push(...["ban", "banned"]);
+// ary = ["g", "gd"]; // but not [3, 6, 5]
+// function fun(value: number): number{        // give type here in functions
+//     return value * 3;
+// }
+// console.log(fun(3));
+// let boole : number;
+// boole = NaN;
+// console.log("hello there");
+// let math = 4;
+// let b;              // any type by default
+// b = "hi";
+// console.log(b);
+// b = 4;
+// //////////////////////////////////////
+// type standardObject = {name: string, cls: number, jam?: number | string};   // function signature, jam parameter is optional
+// let fff : (x: standardObject) => string;        // function signature
+// fff = function (objet: standardObject){
+//     return `${objet.name} is in class ${objet.cls}`;
+// }
+// console.log(fff({name: "he", cls: 44}));
+// //////////////////////////////////////
+// const myUnchangingUser = {
+//     name: "Fatma",
+//   } as const;
+//   // When "as const" is applied to the object, then it becomes
+//   // a object literal which doesn't change instead of a
+//   // mutable object which can.
+// //   myUnchangingUser.name = "Raîssa";  // ERROR
+//   // "as const" is a great tool for fixtured data and
+//   // "as const" also
+//   // works with arrays:
+//   const exampleUsers = [{ name: "Brian" }, { name: "Fahrooq" }] as const;
+// ////////////////////////////////////////
+// let form = document.querySelector('form');          // type is HTMLFormElement
+// // console.log(form.method);       will give error as form value may be null 
+// // so - 1. form = document.querrselector('form')!;  --  means we gurantee that form element is present
+// //  or if(form){console.log(form.method)} 
+// let div = document.querySelector('.container');         // type element as can't infer from class name but from tag name    
+// // or div = document.querySelector('.container') as HTMLDivElement; 
+// //////////////////////////////////////////////////////////
+// // now change in tsconfig file change - "target": es6 i.e we will write in this 
+// // and change module to ES2015
+// // do tsc --init to produce a cofig file for ts
+// // change rootDirec: to directory in which files will be compiled
+// // change ourDirec: to directory to directory in which compiled js files will go 
+// // add property - "include: ["src"]" in tsconfig file at last => only files in src folder will be compiled to .js files 
+// ///////////////////////////////////////////////////////  
+// //classes 
+// class Man {
+//     constructor(private name: string, private age: number){}    // with private members you don't have to write constructor, just pass them
+//     speak() {console.log("I am speaking!", this.name, this.age)}
+// }
+// //////////////////////////
+// // interface 
+// // it is used to describe features of class or object, it is not used to create object(unlike class which also has constructor
+// // and function for all objects are same)
+// // An interface can extend any number of interfaces but one interface cannot implement another interface
+// //because if any interface is implemented then its methods must be defined and interface never has the definition of any method
+// interface persInterface {
+//     lastName: string,
+//     sayHello: () => number
+// }
+//   // person has firstname additional to persInterafce interface
+// class Person implements persInterface {
+//     firstName: string;
+//     lastName: string;
+// constructor(firstName: string, lastName: string) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+// }
+// sayHello(): number {
+//     return 10;
+// }
+// }
+// //////////////////////////////////////// 
+// // generics 
+// // generics are similar to c++ templates, i.e multiple types share common function/class etc 
+// //and we specify which type we are using while declaration
+// function uid(obj: object){      // type is object hence no idea of what the properties or methods are
+//     let uidno = Math.floor(Math.random() * 10) + 1;
+//     // console.log(obj.age);          // ERROR: dont know if property "age" exists
+//     return {...obj, uidno};        // we only know that returned object has uidno property not name or age as we passed type:object             
+// }
+// let newobject = uid({name: "shaun", age: 53});
+// console.log(newobject.uidno);   // fine 
+// // console.log(obj.age);          // ERROR: dont know if property "age" exists
+// // so use generics 
+// function newuid<T>(obj: T){
+//     let uidno = Math.floor(Math.random() * 10) + 1;
+//     return {...obj, uidno};
+// }
+// let anotherobject = newuid({name: "shaun", age: 53});
+// console.log(anotherobject.age);     // works fine
+// // but here 
+// let someobject = newuid("shaun");   // works !!!! but but we want only object to be T so 
+// function finaluid<T extends {name:string, age: number}>(obj: T){        // here T similar to class extends bla bla 
+//     // do same here works only with that object
+// }
+// // generics with interface 
+// interface storage <T> {
+//     name: string; 
+//     qty: number;
+//     data : T            // since data can be any string or number etc 
+// }
+// // now 
+// let newstorage: storage<string> = {
+//     name: "Adults", 
+//     qty: 5, 
+//     data: "they are old"
+// }
