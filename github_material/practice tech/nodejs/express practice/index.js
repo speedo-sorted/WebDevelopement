@@ -10,7 +10,7 @@ app.set('views',path.join(__dirname,'/views'));
 
 */
 
-app.set('view engine', 'ejs');        // look for ejs files
+// app.set('view engine', 'ejs');        // look for ejs files
 
 const port=3000;
 
@@ -20,7 +20,5 @@ const port=3000;
 app.listen(port,()=>{console.log(`Sucess!! listening at port ${port} in the directory: `,__dirname)});
 
 app.get('/', (req,res)=>{
-    let num = Math.floor(Math.random()*100) +1;
-    
-    res.render('home',{rand:num});     // pass num variable as rand to be used in /views/home.ejs
+    fetch("https://maps.googleapis.com/maps/api/geocode/json", {address: "Noida"}).then(res => res.json()).then(data => {console.log(data); res.send(data)})
 });

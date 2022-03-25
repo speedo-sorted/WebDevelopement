@@ -23,7 +23,7 @@ const productSchema = new Schema({
 const farmSchema = new Schema({
     name: String,
     city: String,
-    products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
+    products: [{ type: Schema.Types.ObjectId}]
 })
 
 const Product = mongoose.model('Product', productSchema);
@@ -45,11 +45,11 @@ const makeFarm = async () => {
 
 const addProduct = async () => {
     const farm = await Farm.findOne({ name: 'Full Belly Farms' });
-    // const watermelon = await Product.findOne({ name: 'Sugar Baby Watermelon' });
-    farm.products.splice(0, farm.products.length - 1);
-
+    const watermelon = await Product.findOne({ name: 'Sugar Baby Watermelon' });
+    // farm.products.splice(0, farm.products.length - 1);
+    farm.products.push(watermelon);
     await farm.save();
-    const data = await Farm.findOne({}).populate('products -_id');
+    const data = await Farm.findOne({}).populate('products');
     console.log(data);
 }
 

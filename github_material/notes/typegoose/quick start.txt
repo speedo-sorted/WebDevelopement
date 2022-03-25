@@ -1,0 +1,15 @@
+M1 w/o using typegoose 
+
+-- we will create interface for typescript and schema for mongoose
+
+- first make mongoose schema normally
+- make interface using -
+	interface User extends Document { ... } 
+	-> this will add Document properties _id, _v etc. 
+	
+	add type referencing from user for addresses of users for better semantics -
+	-> interface Address Partial<User> { name: User['name'] }		
+					   NOT { name: string }
+
+- mongoose.model<User> ('User', UserSchema)
+						

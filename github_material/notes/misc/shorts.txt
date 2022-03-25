@@ -1,0 +1,20 @@
+
+-----------------------------------------
+
+why asynchronous js ?
+
+say u want to show photo from server
+then you first need to download it.
+if you don't wait for it to download and try to display it, it would be blank.
+so no. 1 - we need to wait for it to download before we can show it.
+pt-2 if we wait for it to download and then show then next processes will get blocked - importantly UI. 
+so - async procedure means if some timeconsuming process ( usually non-js ) you can proceed with next 
+processes and once it is complete do the process with the fetched resource.
+
+-----------------------------------------
+
+javascript - set timeout and promise 
+
+it tells order of execution of promise and settimeout - microqueue and macroqueue
+
+https://javascript.plainenglish.io/6-interview-questions-that-combine-promise-and-settimeout-34c430fc297e

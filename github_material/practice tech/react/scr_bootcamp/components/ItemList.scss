@@ -1,0 +1,11 @@
+.list-box{
+    margin: 2rem 0;
+    background-color: #fefefe;
+    padding: 3rem;
+}
+.list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

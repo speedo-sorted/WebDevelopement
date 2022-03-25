@@ -25,7 +25,6 @@ function jsHilight(editorClass){
     code.innerText = "";
     
     let text = "";
-    console.log(codeContent);
     for(let i = 0; i < codeContent.length ; i++)
     {
         if(seperators.indexOf(codeContent[i]) !== -1)
@@ -58,22 +57,24 @@ function jsHilight(editorClass){
                     else if(operators.indexOf(text) !== -1)
                         element.classList.add('operator');
                     else 
-                        code.innerHTML += text;
+                        code.appendChild(document.createTextNode(text));
+                        // code.innerHTML += text;
                     
                     if(element.classList.length > 0)
                         code.appendChild(element);
                     
                     text = "";
                 }
+
                 if(codeContent[i] !== ' ' && codeContent[i] !== '\n')
-                {
+                {   
                     let breaker = document.createElement('span');
-                    breaker.innerText = codeContent[i];
                     breaker.classList.add('punctuation');
+                    breaker.innerText = codeContent[i];
                     code.appendChild(breaker);
                 }
                 else 
-                    code.innerHTML += codeContent[i];   
+                    code.appendChild(document.createTextNode(codeContent[i]));
             }
                
         }
@@ -84,12 +85,12 @@ function jsHilight(editorClass){
     }
     if(text !== "")
     {
-        code.innerHTML += text;
+        code.appendChild(document.createTextNode(text));
     }
 
     let langBox = document.createElement('div');
     langBox.classList.add('code-language');
-    langBox.innerHTML = codelang;
+    langBox.appendChild(document.createTextNode(codelang));
     code.prepend(langBox);
 }
 

@@ -1,16 +1,30 @@
+import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import * as Express from "express";
 import { buildSchema } from "type-graphql";
-import eventResolver from "./resolvers/eventResolver";
+import { connect } from "mongoose";
+
+
+import { EventResolver } from "./resolvers/eventResolver";
+
 
 
 const main = async () => {
 
     const schema = await buildSchema({
 
-        resolvers: [eventResolver],
+        resolvers: [EventResolver],
+        emitSchemaFile: true,
+        validate: false,
 
     });
+
+    // mongodb connection
+    const url = "mongodb://localhost:27017/gql";
+
+    const mongoose = await connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+    await mongoose.connection;
+
 
     const apolloServer = new ApolloServer({schema});
     await apolloServer.start(); 
@@ -25,4 +39,4 @@ const main = async () => {
     
 }
 
-main();
+main().catch(e => {console.log(e)});

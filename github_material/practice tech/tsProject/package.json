@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "ts-node-dev src/modules/event/app.ts",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev src/index.ts",
     "build": "tsc -p ."
   },
   "keywords": [],
@@ -16,7 +16,7 @@
     "apollo-server-express": "^3.3.0",
     "express": "^4.17.1",
     "graphql": "^15.5.3",
-    "mongoose": "^6.0.5",
+    "mongoose": "~5.13.8",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1"
   },

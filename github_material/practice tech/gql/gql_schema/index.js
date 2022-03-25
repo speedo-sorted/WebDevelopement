@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Event = require('../mongoose_schema/events')
 
 // mongodb connection
-const url = "mongodb+srv://user1:test123@cluster0.kzvms.mongodb.net/Cluster0?retryWrites=true&w=majority";
+const url = "mongodb://localhost:27017/gql";
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log("Yeah! mongoose connected"))
@@ -31,7 +31,7 @@ const eventData = [
         date: "2021-12-08T01:30:00Z",                               
         description: "A all in one coding event", 
         location: "online", 
-        winners: [
+        participant: [
             {
                 position: 1, 
                 name: "Josh",
@@ -60,6 +60,10 @@ const eventData = [
         description: "A exhaustive guide for internship, training and planning", 
         location: "IIIT Kota", 
         winners: [
+            {
+                name: "raju hero", 
+                position: 5
+            }
         ], 
         eligibility: "everyone",
     }
@@ -145,7 +149,7 @@ const resolvers = {
     Query: {
 
         allEvents: async () => {
-            let events = await Event.findMany({});
+            let events = await Event.find({});
             console.log(events);
             return events;
         }, 
