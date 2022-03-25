@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Event = require('./mongoose_schema/events');
+<<<<<<< HEAD
 const url = "mongodb://localhost:27017/gql";
+=======
+const url = "xyz"
+>>>>>>> 4bd11495d3811ce2a3019744a99601213d1e8bfd
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log("Yeah! mongoose connected"))
