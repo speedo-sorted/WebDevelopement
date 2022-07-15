@@ -19,7 +19,7 @@ export default function MealItemForm(props) {
         return;
       }
 
-      // setIsAmountValid(true);
+      setIsAmountValid(true);
       props.addItemToCart(numberAmount);
 
     }
@@ -38,7 +38,7 @@ export default function MealItemForm(props) {
             }
         />
         <button>+ Add</button>
-        {!isAmountValid && <p>Please enter valid amount(1-5)</p>}
+        {!isAmountValid && <p style={{color: "red"}}>Please enter valid amount(1-5)</p>}
     </form>
   )
 }

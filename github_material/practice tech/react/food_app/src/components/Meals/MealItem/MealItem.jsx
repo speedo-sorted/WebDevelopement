@@ -11,12 +11,11 @@ export default function MealItem(props) {
    const cartCtx = useContext(cartContext);
 
    function addItemHandler(amount) {
-     console.log("parent")
     cartCtx.addItem({
       id: props.id, 
       name: props.name, 
       amount: amount,
-      // price: props.price,
+      price: props.price,
     })
    }
   return (

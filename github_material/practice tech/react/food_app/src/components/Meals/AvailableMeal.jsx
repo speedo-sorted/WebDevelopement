@@ -1,47 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-import MealItem from './MealItem/MealItem';
-import Card from '../UI/Card';
+import MealItem from "./MealItem/MealItem";
+import Card from "../UI/Card";
 
-import classes from './AvailableMeal.module.css';
-
-const DUMMY_MEALS = [
-    {
-      id: 'm1',
-      name: 'Sushi',
-      description: 'Finest fish and veggies',
-      price: 22.99,
-    },
-    {
-      id: 'm2',
-      name: 'Schnitzmeal',
-      description: 'A german specialty!',
-      price: 16.5,
-    },
-    {
-      id: 'm3',
-      name: 'Barbecue Burger',
-      description: 'American, raw, meaty',
-      price: 12.99,
-    },
-    {
-      id: 'm4',
-      name: 'Green Bowl',
-      description: 'Healthy...and green...',
-      price: 18.99,
-    },
-  ];
+import classes from "./AvailableMeal.module.css";
+import useHttp from "./../hooks/use-http";
 
 export default function AvailableMeal() {
+  const [items, setItems] = useState([]);
+  const { isLoading, isError, requester } = useHttp();
+
+  function fetchItems(data) {
+    console.dir(data);
+    let allItems = [];
+
+    for (let key in data) {
+      allItems.push({ id: key, ...data[key] });
+    }
+    setItems(allItems);
+  }
+
+  useEffect(() => {
+    requester(
+      {
+        url: `${process.env.REACT_APP_DB}/items.json`,
+        body: {},
+      },
+      fetchItems
+    );
+  }, []);
+
   return (
     <Card className={classes.meals}>
-        <ul>
-            {
-              DUMMY_MEALS.map(meal => (<MealItem key={meal.id} id={meal.id} 
-              name={meal.name} description={meal.description} price={meal.price} />))
-            }
-        </ul>
+      <ul>
+        {isError && <p>Something went wrong! Please reload the page</p>}
+        {!isError && isLoading && <p>Loading...</p>}
+        {!isLoading &&
+          !isError &&
+          items.map((meal) => (
+            <MealItem
+              key={meal.id}
+              id={meal.id}
+              name={meal.name}
+              description={meal.description}
+              price={meal.price}
+            />
+          ))}
+      </ul>
     </Card>
   );
 }
-
